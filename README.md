@@ -29,6 +29,7 @@ Then I built the remove functionality, which took the most thinking through. The
 
 
   **3. How did you handle invalid input for product name or price?
+   This is the piece I have not built yet. Right now the app will accept an empty product name or an invalid price without stopping it. My next step is adding a validation on check before a product gets added, confirming the name field isn't empty and the price is a valid number greater than zero, and giving an alert if either check fails.
 
   **4. What challenges did you face when implementing the remove functionality?
     The main challenge I had was figuring out how the remove function would know which specific price to subtract, since by the time someone clicks remove, the information only exists inside the DOM element itself. Storing the price on the element with a dataset solved that. The second piece was making sure the click was traced back to the correct list item rather than just the button itself, which `event.target.closest("li"` handles.
