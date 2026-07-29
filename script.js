@@ -12,7 +12,7 @@ const cart = document.getElementById('cart');
 
 const totalPriceSpan = document.getElementById('total-price');
 
-// step 2 create the data 
+// step 2 create the data  / variables
 
 let totalPrice = 0; 
 
@@ -30,45 +30,66 @@ let totalPrice = 0;
 function addToCart() {
   const productName = productNameInput.value; // get the user input
 
-  const productPrice = productPriceInput.value; // get the user price input
+  const productPrice = Number(productPriceInput.value); // get the user price input + convert to a # from a string
 
 
   const cartProduct = document.createElement("li"); //create new HTML element
 
   cartProduct.textContent = `${productName} - $${productPrice}` //put the user input text inside the new <li> element
 
+  cartProduct.dataset.price = productPrice;
+  //function to remove an item
+
+  const removeButton = document.createElement("button"); //create button element in HTML
+
+  removeButton.textContent = "❌"; 
+
+  removeButton.addEventListener("click", removeItem);
+
+  cartProduct.appendChild(removeButton);
+
   cart.appendChild(cartProduct); 
 
+  updateTotalPrice(productPrice); 
+
+  productNameInput.value = "";
+  productPriceInput.value = "";
+
 }
-
-//function to update total price
-function updateTotalPrice(amount) {
-  totalPrice += amount;
-  totalPriceSpan.textContent = totalPrice.toFixed(2);
-}
-
-
-//function to remove an item
 
 function removeItem(event) {
-  const item = event.target.closest('li');
+  const item = event.target.closest("li");
 
-  const price = parseFloat(item.dataset.price); 
+  const price = Number(item.dataset.price);
 
   updateTotalPrice(-price);
 
   item.remove();
 }
 
-function updateQuantity() {
+//function to update total price
+function updateTotalPrice(amount) {
+  totalPrice += amount;
+  totalPriceSpan.textContent = totalPrice.toFixed(2);
 
 }
 
-function validateInput() {
 
-}
+
+
+
+
+// function updateQuantity() {
+
+// }
+
+// function validateInput() {
+
+// }
 
 // step 5 add event listeners - after declaring everything above
 addProductButton.addEventListener("click", addToCart);
 
-console.log(addToCart)
+//console.log(addToCart)
+
+// removeButton.addEventListener("click")
