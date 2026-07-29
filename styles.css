@@ -125,7 +125,7 @@ button {
 
 #cart {
   max-width: 700px;
-  margin: 0 auto;
+  margin: 40px auto;
 
   list-style: none;
   padding: 0;
@@ -145,6 +145,8 @@ button {
 
   padding: 20px 24px;
   border:  1px solid var(--border-soft);
+
+  color: #222222;
   
   border-radius: 14px;
 
@@ -155,6 +157,11 @@ button {
   transition: transform .2s ease, box-shadow .2s ease;
 }
 
+#cart li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+
+}
 .cart-item {
   display: flex;
   justify-content: space-between;
